@@ -116,8 +116,6 @@ missing a feature, please raise a ticket on Github and I'll look into it.
 Pull request are also welcome.
 
 
-## ⭐️ License
-**DO WHAT THE FUCK YOU WANT PUBLIC LICENSE (WTFPL)**
 
 
 ## ⚡️ Disclaimer
