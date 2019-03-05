@@ -254,7 +254,7 @@ router.get('/:id', (req, res, next)=>{
         });
     
 });
-router.delete('/:id', (req, res, next)=>{
+router.delete('/:id', checkAuth, (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
     User.remove({_id: id})
