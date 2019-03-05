@@ -97,6 +97,35 @@ router.post('/login', (req,res,next)=>{
         });
 })
 
+router.patch('/:id', checkAuth, (req, res, next)=>{
+    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
+    const id = req.params.id;
+    const updateOps = {};
+    for(const ops of req.body){
+        updateOps[ops.propName] = ops.value
+    }
+    User.update({_id: id}, {$set: updateOps})
+        .exec()
+        .then(result=>{
+            console.log(result);
+            res.status(200).json({
+                message: "Edit Sucessful",
+                language: result,
+                request: {
+                    type: "PATCH",
+                    url: fullUrl
+                }
+            })
+        })
+        .catch(err=>{
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
+        })
+    
+});
+
 router.delete('/:id', (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
