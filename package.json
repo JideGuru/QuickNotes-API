@@ -1,0 +1,21 @@
+{
+  "name": "quicknotes-api",
+  "version": "1.0.0",
+  "description": "APi for QuickNotes app made in flutter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "JideGuru",
+  "license": "WTFPL",
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.16",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1"
+  }
+}

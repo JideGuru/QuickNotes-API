@@ -1,0 +1,7 @@
+{
+    "env": {
+        "DB_HOST":"mongodb://localhost:27017/quicknotes",
+        "SERVER_PORT":"3000",
+        "JWT_KEY": "secret"
+    }
+}
