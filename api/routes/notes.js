@@ -127,6 +127,7 @@ router.get('/user/:id', (req, res, next)=>{
 })
 
 
+
 router.get('/:id', (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
