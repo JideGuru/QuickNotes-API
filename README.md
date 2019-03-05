@@ -2,7 +2,7 @@
 
 An API for storing notes for users. it can be integrated in any platform (android, iOS or web apps).
 
-## Requirements
+## ✨ Requirements
 * Nodejs and Mongodb
 * A little knowledge of Nodejs
 * A brain to think 🤓🤓
@@ -85,6 +85,9 @@ Send a PATCH request to http://localhost:3000/notes/NOTEID with the following fi
 **Delete a Note**
 Make a DELETE request to http://localhost:3000/notes/NOTEID 
 
+
+## ⭐️ License
+DO WHAT THE FUCK YOU WANT PUBLIC LICENSE (WTFPL)
 
 ## ⚡️ Disclaimer
 This code is only intended for learning purposes, i am not responsible for anything you use it for.
