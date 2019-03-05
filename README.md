@@ -2,10 +2,12 @@
 
 An API for storing notes for users. it can be integrated in any platform (android, iOS or web apps).
 
+
 ## ✨ Requirements
 * Nodejs and Mongodb
 * A little knowledge of Nodejs
 * A brain to think 🤓🤓
+
 
 ## 🎖 Installing
 To install all dependencies run the following command in terminal
@@ -66,14 +68,19 @@ Make a POST request to http://localhost:3000/notes with the following fields
 * content
 * user(UserId of the note's owner)
 
+
+
 **List all notes for a particular user**
 
 Make a GET request to http://localhost:3000/notes/user/USERID.
 
 
+
 **Get a particular note**
 
 Make a GET request to http://localhost:3000/notes/NOTEID.
+
+
 
 **Edit a Note**
 
@@ -83,11 +90,19 @@ Send a PATCH request to http://localhost:3000/notes/NOTEID with the following fi
 * user(UserId of the note's owner)
 
 **Delete a Note**
+
 Make a DELETE request to http://localhost:3000/notes/NOTEID 
 
 
+## 🐛 Bugs/Requests
+If you encounter any problems feel free to open an issue. If you feel the API is
+missing a feature, please raise a ticket on Github and I'll look into it.
+Pull request are also welcome.
+
+
 ## ⭐️ License
-DO WHAT THE FUCK YOU WANT PUBLIC LICENSE (WTFPL)
+**DO WHAT THE FUCK YOU WANT PUBLIC LICENSE (WTFPL)**
+
 
 ## ⚡️ Disclaimer
 This code is only intended for learning purposes, i am not responsible for anything you use it for.
