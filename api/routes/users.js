@@ -97,7 +97,7 @@ router.post('/login', (req,res,next)=>{
         });
 })
 
-router.patch('/:id', /*checkAuth,*/ (req, res, next)=>{
+router.patch('/:id', checkAuth, (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
     const updateOps = {};
