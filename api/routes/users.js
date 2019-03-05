@@ -4,6 +4,10 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcrypt')
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
+const checkAuth = require("../middleware/check-auth");
+
+
+
 
 router.post('/signup', (req, res, next)=>{
 
@@ -100,17 +104,28 @@ router.post('/login', (req,res,next)=>{
 router.patch('/:id', checkAuth, (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
-    const updateOps = {};
-    for(const ops of req.body){
-        updateOps[ops.propName] = ops.value
-    }
-    User.update({_id: id}, {$set: updateOps})
+    // const updateOps = {};
+    // for(const ops of req.body){
+    //     updateOps[ops.propName] = ops.value
+    // }
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    bcrypt.hash(req.body.password, 10, (err, hash)=>{
+
+        // console.log(hash)
+        User.update({_id: id}, {name: name, email: email, password: hash})
         .exec()
         .then(result=>{
             console.log(result);
             res.status(200).json({
                 message: "Edit Sucessful",
-                language: result,
+                user: {
+                    name: name,
+                    email: email,
+                    password: hash
+                },
                 request: {
                     type: "PATCH",
                     url: fullUrl
@@ -123,6 +138,8 @@ router.patch('/:id', checkAuth, (req, res, next)=>{
                 error: err
             })
         })
+    })
+    
     
 });
 
@@ -135,10 +152,10 @@ router.delete('/:id', (req, res, next)=>{
             console.log(result);
             res.status(200).json({
                 message: "User Deleted",
-                // request: {
-                //     type: "DELETE",
-                //     url: fullUrl
-                // }
+                request: {
+                    type: "DELETE",
+                    url: fullUrl
+                }
             })
         })
         .catch(err=>{

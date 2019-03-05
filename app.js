@@ -43,10 +43,10 @@ app.use((req, res, next) => {
 })
 
 app.use('/notes', notesRoute);
-app.use('/user', userRoute);
+app.use('/users', userRoute);
 
 app.use((req, res, next)=>{
-    const error = new Error('Not Found');
+    const error = new Error('Route Not Found');
     error.status = 404;
     next(error);
 })
@@ -58,7 +58,7 @@ app.use((error, req, res, next)=>{
             status: "Something went wrong",
             message: error.message,
             status_code: error.status,
-            extra_message: "You can't be here!"
+            // extra_message: "You can't be here!"
         }
     })
 })

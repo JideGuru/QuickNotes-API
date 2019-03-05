@@ -10,7 +10,7 @@ const checkAuth = require("../middleware/check-auth");
 router.get('/', (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     Note.find()
-        .populate('language', '_id title content')
+        .populate('user', '_id name email')
         .exec()
         .then(result=>{
             const response = {
@@ -20,6 +20,7 @@ router.get('/', (req, res, next)=>{
                         title: result.title,
                         content: result.content,
                         _id: result._id,
+                        user: result.user,
                         self:{
                             type: 'GET',
                             url: `${fullUrl}/${result._id}`
@@ -83,6 +84,49 @@ router.post('/', /*checkAuth,*/ (req, res, next)=>{
         });
 });
 
+
+router.get('/user/:id', (req, res, next)=>{
+
+    const id = req.params.id;
+    console.log(id)
+    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
+    Note.find({user: id})
+        .populate('user', '_id name email')
+        .exec()
+        .then(result=>{
+            const response = {
+                count: result.length,
+                notes: result.map(result=>{
+                    return{
+                        title: result.title,
+                        content: result.content,
+                        _id: result._id,
+                        user: result.user,
+                        self:{
+                            type: 'GET',
+                            url: `${fullUrl}/${result._id}`
+                        }
+                    }
+                    
+                }),
+                request:{
+                    type: 'GET',
+                    url: `${fullUrl}`
+                }
+                
+            }
+            console.log(result)
+            res.status(200).json(response)
+        })
+        .catch(err=>{
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
+        });
+})
+
+
 router.get('/:id', (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
@@ -94,7 +138,7 @@ router.get('/:id', (req, res, next)=>{
             if(result != null){
                 res.status(200).json({
                     message:"Request Successful",
-                    person: result,
+                    note: result,
                     request: {
                         type: "GET",
                         url: fullUrl
@@ -124,17 +168,25 @@ router.get('/:id', (req, res, next)=>{
 router.patch('/:id', /*checkAuth,*/ (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
-    const updateOps = {};
-    for(const ops of req.body){
-        updateOps[ops.propName] = ops.value
-    }
-    Note.update({_id: id}, {$set: updateOps})
+    // const updateOps = {};
+    // for(const ops of req.body){
+    //     updateOps[ops.propName] = ops.value
+    // }
+
+    const title = req.body.title;
+    const content = req.body.content;
+    const user = req.body.user;
+    Note.update({_id: id}, {title: title, content: content, user: user})
         .exec()
         .then(result=>{
             console.log(result);
             res.status(200).json({
                 message: "Edit Sucessful",
-                language: result,
+                note: {
+                    title: title, 
+                    content: content, 
+                    user: user
+                },
                 request: {
                     type: "PATCH",
                     url: fullUrl
