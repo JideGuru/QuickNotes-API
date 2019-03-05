@@ -30,7 +30,7 @@ Make a POST request to http://localhost:3000/users/signup with the following fie
 * password
 
 Example:
-{"name":"JideGuru", "email":"guruliciousjide@gmail.com", "password":"password"}
+{"name":"UserName", "email":"email@mail.com", "password":"password"}
 
 **User Login**
 
@@ -39,7 +39,7 @@ Make a POST request to http://localhost:3000/users/login with the following fiel
 * password
 
 Example:
-{"email":"guruliciousjide@gmail.com", "password":"password"}
+{"email":"email@mail.com", "password":"password"}
 
 NOTE: a token will be generated for every login and its lasts for **One Hour(1H)** only. The token will be required when doing some operations like **Editing a User**, **Changing a User's Display Picture** and **Deleting a User**.
 
@@ -55,7 +55,7 @@ Send a PATCH request to http://localhost:3000/users/USERID with the following fi
 * password
 
 Example:
-{"name":"NewName", "email":"guruliciousjide@gmail.com", "password":"Newpassword"}
+{"name":"NewName", "email":"email@mail.com", "password":"Newpassword"}
 
 **To set or change a user's Profile Picture**
 
@@ -66,7 +66,7 @@ Sent a PATCH request to http://localhost:3000/users/USERID with a muiltipart bod
 * dp (Only JPG and PNG are supported)
 
 Example:
-{"name":"JideGuru", "email":"guruliciousjide@gmail.com", "password":"password", "dp":"MultiPart Image"}
+{"name":"UserName", "email":"email@mail.com", "password":"password", "dp":"MultiPart Image"}
 
 **To get a particular user information**
 
