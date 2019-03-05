@@ -1,7 +1,7 @@
 {
   "name": "quicknotes-api",
   "version": "1.0.0",
-  "description": "APi for QuickNotes app made in flutter",
+  "description": "API for QuickNotes app made in flutter",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
