@@ -35,7 +35,7 @@ Make a POST request to http://localhost:3000/users/login with the following fiel
 * name
 * password
 
-NOTE: a token will be generated for every login and its lasts for **One Hour(1H)** only. The token will be required when doing some operations like **Editing a User**, **Changing a User's DP** and **Deleting a User**.
+NOTE: a token will be generated for every login and its lasts for **One Hour(1H)** only. The token will be required when doing some operations like **Editing a User**, **Changing a User's Display Picture** and **Deleting a User**.
 
 **Delete a User**
 
