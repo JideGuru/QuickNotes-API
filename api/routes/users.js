@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt')
+const bcryptjs = require('bcryptjs');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const checkAuth = require("../middleware/check-auth");
@@ -45,7 +45,7 @@ router.post('/signup', (req, res, next)=>{
                     mesage: `User with email ${req.body.email} exists`
                 })
             }else{
-                bcrypt.hash(req.body.password, 10, (err, hash)=>{
+                bcryptjs.hash(req.body.password, 10, (err, hash)=>{
                     if(err){
                         return res.status(500).json({
                             error: err
@@ -93,7 +93,7 @@ router.post('/login', (req,res,next)=>{
                     message: "Auth Failed"
                 })
             }
-            bcrypt.compare(req.body.password, user[0].password, function(err, result) {
+            bcryptjs.compare(req.body.password, user[0].password, function(err, result) {
                 if(err){
                     return res.status(401).json({
                         message: "Auth Failed"
@@ -113,7 +113,12 @@ router.post('/login', (req,res,next)=>{
                     return res.status(200).json({
                         mesage: "Auth Successful",
                         token: token,
-                        user: user[0]
+                        user: {
+                            name: user[0].name,
+                            email: user[0].email,
+                            id: user[0]._id,
+                            dp: user[0].dp
+                        }
                     });
                 }
                 return res.status(401).json({
@@ -139,7 +144,7 @@ router.patch('/dp/:id', upload.single('dp'), checkAuth, (req,res,next)=>{
     const password = req.body.password;
     const dp = req.file.path;
 
-    bcrypt.hash(req.body.password, 10, (err, hash)=>{
+    bcryptjs.hash(req.body.password, 10, (err, hash)=>{
         User.update({_id: id}, {name: name, email: email, password: hash, dp: dp})
         .exec()
         .then(result=>{
@@ -181,7 +186,7 @@ router.patch('/:id', checkAuth, (req, res, next)=>{
     const email = req.body.email;
     const password = req.body.password;
 
-    bcrypt.hash(req.body.password, 10, (err, hash)=>{
+    bcryptjs.hash(password, 10, (err, hash)=>{
 
         // console.log(hash)
         User.update({_id: id}, {name: name, email: email, password: hash})
