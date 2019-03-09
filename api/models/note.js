@@ -1,3 +1,4 @@
+//Am not sure i need to comment this LOL
 const mongoose = require("mongoose");
 
 const noteSchema = mongoose.Schema({
