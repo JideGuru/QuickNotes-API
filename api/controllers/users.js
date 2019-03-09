@@ -1,10 +1,15 @@
 const mongoose = require("mongoose");
+//bcrypt to encrypt passwords
 const bcryptjs = require('bcryptjs');
 const User = require('../models/user');
+//JWT for generating tokens
 const jwt = require('jsonwebtoken');
+//For validating Tokens
 const checkAuth = require("../middleware/check-auth");
+//Multer for File upload
 const multer = require('multer');
 
+//Define the storage folder
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
         cb(null, './uploads/');
@@ -14,6 +19,7 @@ const storage = multer.diskStorage({
     }
 });
 
+//Filefilter to specify accepted file types
 const fileFilter = (req, file, cb)=>{
     //reject a file
     if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
@@ -23,6 +29,8 @@ const fileFilter = (req, file, cb)=>{
     }
     
 }
+
+//multer 
 const upload = multer({
     storage: storage, 
     limits: {
@@ -31,6 +39,7 @@ const upload = multer({
     fileFilter: fileFilter,
 })
 
+//Signup(POST) a new user
 exports.user_signup = (req, res, next)=>{
 
     User.find({email: req.body.email})
@@ -79,6 +88,7 @@ exports.user_signup = (req, res, next)=>{
         });   
 }
 
+//Login(POST) an existing user
 exports.user_login = (req,res,next)=>{
     User.find({email: req.body.email})
         .exec()
@@ -129,6 +139,7 @@ exports.user_login = (req,res,next)=>{
         });
 }
 
+//Set Display Picture for a User
 exports.user_dp = upload.single('dp'), checkAuth, (req,res,next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     
@@ -169,6 +180,7 @@ exports.user_dp = upload.single('dp'), checkAuth, (req,res,next)=>{
 
 }
 
+//Edit(PATCH) a user
 exports.user_edit = checkAuth, (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
@@ -212,6 +224,7 @@ exports.user_edit = checkAuth, (req, res, next)=>{
     
 }
 
+//Get details of a user
 exports.view_user = (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
     var imgUrl = req.protocol + '://' + req.get('host');
@@ -254,6 +267,8 @@ exports.view_user = (req, res, next)=>{
     
 }
 
+
+//DELETE user
 exports.delete_user = checkAuth, (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
