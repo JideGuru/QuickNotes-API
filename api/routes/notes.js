@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+//Import the notes controller
 const NotesController = require('../controllers/notes');
 
+//Very self explanatory!
 router.get('/', NotesController.get_all_notes);
 router.post('/', NotesController.post_note);
 router.get('/user/:id', NotesController.get_one_user_notes);

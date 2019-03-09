@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+//Import the users controller
 const UsersController = require('../controllers/users');
 
+//Very self explanatory!
 router.post('/signup', UsersController.user_signup);
 router.post('/login', UsersController.user_login);
 router.patch('/dp/:id', UsersController.user_dp);
