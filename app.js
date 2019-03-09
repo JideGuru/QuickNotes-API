@@ -14,15 +14,20 @@ console.log(`${process.env.DB_HOST}`)
 mongoose.connect(`${process.env.DB_HOST}`, {
     useNewUrlParser: true
 });
-
+//Connect Mongoose
 mongoose.connection
     .once('open', ()=>console.log('Database Connected'))
     .on('error', (err)=>{
         console.log("Error Connecting to Database", err)
 });
 
+//Use Morgan to log all requests
 app.use(morgan('dev'));
+
+//Allow Access to files in Uploads
 app.use('/uploads', express.static('uploads'));
+
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -43,15 +48,18 @@ app.use((req, res, next) => {
     next();
 })
 
+//Define the routes
 app.use('/notes', notesRoute);
 app.use('/users', userRoute);
 
+//Throw 4040 if routes not valid
 app.use((req, res, next)=>{
     const error = new Error('Route Not Found');
     error.status = 404;
     next(error);
 })
 
+//Display Errors
 app.use((error, req, res, next)=>{
     res.status(error.status || 500);
     res.json({
