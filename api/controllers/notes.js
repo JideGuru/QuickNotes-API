@@ -3,7 +3,7 @@ const User = require("../models/user");
 const checkAuth = require("../middleware/check-auth");
 const mongoose = require("mongoose");
 
-
+//List(GET) all Notes on server(not really needed)
 exports.get_all_notes = (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     Note.find()
@@ -42,6 +42,7 @@ exports.get_all_notes = (req, res, next)=>{
         });
 }
 
+//Added(POST) a note to a user's account
 exports.post_note= /*checkAuth,*/ (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
 
@@ -80,6 +81,8 @@ exports.post_note= /*checkAuth,*/ (req, res, next)=>{
         });
 }
 
+
+//List(GET) notes for just one user
 exports.get_one_user_notes = (req, res, next)=>{
 
     const id = req.params.id;
@@ -121,6 +124,7 @@ exports.get_one_user_notes = (req, res, next)=>{
         });
 }
 
+//GET a particular note using an ID
 exports.get_one_note = (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
@@ -159,6 +163,7 @@ exports.get_one_note = (req, res, next)=>{
     
 }
 
+//Edit/Update(PATCH) a note
 exports.edit_one_note = checkAuth, (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
@@ -196,7 +201,7 @@ exports.edit_one_note = checkAuth, (req, res, next)=>{
     
 }
 
-
+//DELETE a note!
 exports.delete_one_note = checkAuth, (req, res, next)=>{
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     const id = req.params.id;
