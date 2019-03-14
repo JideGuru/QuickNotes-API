@@ -1,6 +1,6 @@
 {
     "env": {
-        "DB_HOST":"mongodb://localhost:27017/quicknotes",
+        "DB_HOST":"mongodb+srv://jide_guru:mongodbatlas@cluster0-qxhaw.mongodb.net/test?retryWrites=true",
         "SERVER_PORT":"3000",
         "JWT_KEY": "secret"
     }
