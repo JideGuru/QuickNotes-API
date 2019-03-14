@@ -12,7 +12,7 @@ const userRoute = require('./api/routes/users');
 mongoose.Promise = global.Promise;
 console.log(`${process.env.DB_HOST}`)
 mongoose.connect(`${process.env.DB_HOST}`, {
-    useNewUrlParser: true
+    // useNewUrlParser: true
 });
 //Connect Mongoose
 mongoose.connection
