@@ -2,6 +2,7 @@
 
 An API for storing notes for users. it can be integrated in any platform (android, iOS or web apps).
 
+Test here: https://quick-notes-api.herokuapp.com/
 
 ## ✨ Requirements
 * Nodejs and Mongodb
