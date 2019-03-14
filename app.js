@@ -3,7 +3,7 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+require('dotenv').config()
 
 const notesRoute = require('./api/routes/notes');
 const userRoute = require('./api/routes/users');
@@ -12,7 +12,7 @@ const userRoute = require('./api/routes/users');
 mongoose.Promise = global.Promise;
 console.log(`${process.env.DB_HOST}`)
 mongoose.connect(`${process.env.DB_HOST}`, {
-    // useNewUrlParser: true
+    useNewUrlParser: true
 });
 //Connect Mongoose
 mongoose.connection
