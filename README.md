@@ -1,4 +1,4 @@
-# 🚀 QuickNotes-API
+# 🚀 QuickNotes-API [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Only 32 Kb](https://badge-size.herokuapp.com/Naereen/StrapDown.js/master/strapdown.min.js)](https://github.com/JideGuru/QuickNotes-API/blob/master) [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/JideGuru) [![Build Status](https://travis-ci.org/lauragift21/travis-blog.svg?branch=master)](https://github.com/JideGuru/QuickNotes-API)  
 
 An API for storing notes for users. it can be integrated in any platform (android, iOS or web apps).
 

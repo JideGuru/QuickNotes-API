@@ -4,7 +4,7 @@
   "description": "API for QuickNotes app made in flutter",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "nodemon server.js"
   },
   "author": "JideGuru",
@@ -12,9 +12,11 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^6.0.2",
     "mongodb": "^3.2.2",
     "mongoose": "^5.4.20",
     "morgan": "^1.9.1",
