@@ -1,11 +1,11 @@
 {
   "name": "quicknotes-api",
   "version": "1.0.0",
-  "description": "API for QuickNotes app made in flutter",
+  "description": "API for QuickNotes",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node server.js"
+    "test": "mocha --exit",
+    "start": "nodemon server.js"
   },
   "author": "JideGuru",
   "license": "WTFPL",
