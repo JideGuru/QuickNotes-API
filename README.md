@@ -46,7 +46,12 @@ Make a POST request to http://localhost:3000/users/login with the following fiel
 * password
 
 Example:
-{"email":"email@mail.com", "password":"password"}
+```json
+{
+    "email":"email@mail.com", 
+    "password":"password"
+}
+```
 
 NOTE: a token will be generated for every login and its lasts for **One Hour(1H)** only. The token will be required when doing some operations like **Editing a User**, **Changing a User's Display Picture** and **Deleting a User**.
 
@@ -62,7 +67,13 @@ Send a PATCH request to http://localhost:3000/users/USERID with the following fi
 * password
 
 Example:
-{"name":"NewName", "email":"email@mail.com", "password":"Newpassword"}
+```json
+{
+    "name":"NewName", 
+    "email":"email@mail.com", 
+    "password":"Newpassword"
+}
+```
 
 **To set or change a user's Profile Picture**
 
@@ -73,7 +84,14 @@ Sent a PATCH request to http://localhost:3000/users/USERID with a muiltipart bod
 * dp (Only JPG and PNG are supported)
 
 Example:
-{"name":"UserName", "email":"email@mail.com", "password":"password", "dp":"MultiPart Image"}
+```json
+{
+    "name":"UserName", 
+    "email":"email@mail.com", 
+    "password":"password", 
+    "dp":"MultiPart Image"
+}
+```
 
 **To get a particular user information**
 
@@ -88,7 +106,13 @@ Make a POST request to http://localhost:3000/notes with the following fields
 * user(UserId of the note's owner)
 
 Example:
-{"title":"Note1", "content":"Note content", "user":"USERID"}
+```json
+{
+    "title":"Note1", 
+    "content":"Note content", 
+    "user":"USERID"
+}
+```
 
 
 **List all notes for a particular user**
@@ -110,7 +134,13 @@ Send a PATCH request to http://localhost:3000/notes/NOTEID with the following fi
 * content
 * user(UserId of the note's owner)
 Example:
-{"title":"NewTitle", "content":"NewContent", "user":"USERID"}
+```json
+{
+    "title":"NewTitle", 
+    "content":"NewContent", 
+    "user":"USERID"
+}
+```
 
 **Delete a Note**
 
