@@ -31,11 +31,11 @@ Make a POST request to http://localhost:3000/users/signup with the following fie
 * password
 
 Example:
-```
+```json
 {
-   "name":"UserName", 
-   "email":"email@mail.com", 
-   "password":"password"
+   "name": "UserName", 
+   "email": "email@mail.com", 
+   "password": "password"
 }
 ```
 
